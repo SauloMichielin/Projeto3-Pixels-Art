@@ -1,5 +1,5 @@
 #button-random-color {
-    
+
 }
 
 .color {
@@ -12,6 +12,7 @@
 
 #cor1 {
     background-color: black;
+    background-color: rgb(red, green, blue)
 }
 
 #cor2 {
