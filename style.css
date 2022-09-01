@@ -1,7 +1,3 @@
-#button-random-color {
-
-}
-
 .color {
     display: inline-block;
     background-color: white;
@@ -11,18 +7,22 @@
 }
 
 #cor1 {
+    border: 1px solid black;
     background-color: black;
     background-color: rgb(red, green, blue)
 }
 
 #cor2 {
+    border: 1px solid black;
     background-color: blue;
 }
 
 #cor3 {
+    border: 1px solid black;
     background-color: green;
 }
 
 #cor4 {
+    border: 1px solid black;
     background-color: red;
 }

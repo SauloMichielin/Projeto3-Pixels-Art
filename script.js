@@ -1,4 +1,3 @@
-
 const botao = document.getElementById('button-random-color')
 botao.addEventListener('click', alteraCores);
 function alteraCores () {
@@ -24,11 +23,15 @@ function alteraCores () {
 }
 
 window.onload = function() {
-let coresIniciais = JSON.parse(localStorage.getItem('colorPalette'));
-document.getElementById('cor2').style.backgroundColor = coresIniciais[0];
-document.getElementById('cor3').style.backgroundColor = coresIniciais[1];
-document.getElementById('cor4').style.backgroundColor = coresIniciais[2];
-console.log(coresIniciais[2])
+    let coresIniciais = JSON.parse(localStorage.getItem('colorPalette'));
+    console.log(coresIniciais)
+    if (coresIniciais === null) {
+        document.getElementById('cor2').style.backgroundColor = 'RGB(255, 0, 0)';
+        document.getElementById('cor3').style.backgroundColor  = 'RGB(0, 255, 0)';
+        document.getElementById('cor4').style.backgroundColor  = 'RGB(0, 0, 255)';
+    } else {
+        document.getElementById('cor2').style.backgroundColor = coresIniciais[0];
+        document.getElementById('cor3').style.backgroundColor = coresIniciais[1];
+        document.getElementById('cor4').style.backgroundColor = coresIniciais[2];
+    }
 }
-
-//teste
