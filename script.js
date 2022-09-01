@@ -21,6 +21,12 @@ function alteraCores () {
     
     localStorage.setItem('colorPalette',JSON.stringify(corInicial));
 }
+for (let index = 1; index <= 25; index += 1) {
+    const quadrados = document.getElementById("pixel-board");
+    let div = document.createElement('div');
+    div.classList.add('pixel')
+    quadrados.appendChild(div);
+}
 
 window.onload = function() {
     let coresIniciais = JSON.parse(localStorage.getItem('colorPalette'));
