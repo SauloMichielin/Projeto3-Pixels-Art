@@ -30,3 +30,5 @@ document.getElementById('cor3').style.backgroundColor = coresIniciais[1];
 document.getElementById('cor4').style.backgroundColor = coresIniciais[2];
 console.log(coresIniciais[2])
 }
+
+//teste
