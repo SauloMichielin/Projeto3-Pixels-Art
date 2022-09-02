@@ -5,7 +5,7 @@ function alteraCores () {
         let r = parseInt(Math.random()*255)
         let g = parseInt(Math.random()*255)
         let b = parseInt(Math.random()*254) //é 254 para eliminar a possibilidade de dar branco
-        const cores = document.getElementById('cor'+index)
+        const cores = document.getElementById('cor' + index)
         cores.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b +')';
     }
     if ('cor2' === 'cor3' || 'cor2' === 'cor4' || 'cor3' === 'cor4') {
@@ -13,7 +13,7 @@ function alteraCores () {
             let r = parseInt(Math.random()*255)
             let g = parseInt(Math.random()*255)
             let b = parseInt(Math.random()*254)
-            const cores = document.getElementById('cor'+index)
+            const cores = document.getElementById('cor' + index)
             cores.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b +')';
         }
     }
@@ -21,11 +21,21 @@ function alteraCores () {
     
     localStorage.setItem('colorPalette',JSON.stringify(corInicial));
 }
+
 for (let index = 1; index <= 25; index += 1) {
     const quadrados = document.getElementById("pixel-board");
     let div = document.createElement('div');
     div.classList.add('pixel')
     quadrados.appendChild(div);
+}
+
+const botaoLimpar = document.getElementById('clear-board')
+botaoLimpar.addEventListener('click', reset)
+function reset () {
+    const pixels = document.getElementsByClassName('pixel')
+    for (let index = 0; index < pixels.length; index +=1) {
+    pixels[index].style.backgroundColor = 'white'
+    }
 }
 
 window.onload = function() {
