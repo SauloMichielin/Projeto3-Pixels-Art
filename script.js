@@ -22,7 +22,8 @@ function alteraCores () {
     localStorage.setItem('colorPalette',JSON.stringify(corInicial));
 }
 
-let size = parseInt(document.getElementById('inputGrid').value);
+
+let size = 5;
 let = board = 'auto';
 let grid = (size * 42);
 let quadrados = document.getElementById("pixel-board");
@@ -33,37 +34,43 @@ for (let i = 1; i < size; i += 1) {
 for (let index = 0; index < size * size; index += 1) {
     let div = document.createElement('div');
     div.classList.add('pixel')
+    div.style.backgroundColor = 'white';
     quadrados.appendChild(div);
+    
 }
+corSelecionada()
 
-const botaoTamanho = document.getElementById('botaoTamanho');
+
+const botaoTamanho = document.getElementById('generate-board');
 botaoTamanho.addEventListener('click', grids);
 function grids() {
-    size = parseInt(document.getElementById('inputGrid').value);
+    size = parseInt(document.getElementById('board-size').value);
     board = 'auto';
     grid = (size * 42);
     quadrados = document.getElementById("pixel-board");
     const pixelados = document.getElementsByClassName('pixel');
-    quadrados.style.height = grid + 'px';
-    quadrados.style.width = grid + 'px';
-    for (let i = pixelados.length - 1; i >=0; i--) {
-        pixelados[i].remove();
+    console.log(size)
+    if (isNaN(size) === true) {
+        alert('Board inválido!')
+    } else {
+        quadrados.style.height = grid + 'px';
+        quadrados.style.width = grid + 'px';
+        for (let i = pixelados.length - 1; i >=0; i--) {
+            pixelados[i].remove();
+        }
+        for (let i = 1; i < size; i += 1) {
+            board = board + ' auto';
+            quadrados.style.gridTemplateColumns = board
+        }
+        for (let index = 0; index < size * size; index += 1) {
+            let div = document.createElement('div');
+            div.classList.add('pixel')
+            div.style.backgroundColor = 'white'
+            quadrados.appendChild(div);
+        }
     }
-    for (let i = 1; i < size; i += 1) {
-        board = board + ' auto';
-        quadrados.style.gridTemplateColumns = board
-    }
-    for (let index = 0; index < size * size; index += 1) {
-        let div = document.createElement('div');
-        div.classList.add('pixel')
-        quadrados.appendChild(div);
-    }
+    corSelecionada()
 }
-
-
-
-
-
 
 
 document.getElementById('cor1').style.background = 'black';
@@ -80,8 +87,10 @@ for (let index = 0; index < coresSelecionaveis.length; index += 1) {
         }
         corEscolhida.className = 'color selected';
     })
+    
 }
 
+function corSelecionada(){
 const corEscolhida = document.getElementsByClassName('color selected');
 const pixelsColorir = document.getElementsByClassName('pixel');
 for (let index = 0; index < pixelsColorir.length; index += 1) {
@@ -94,14 +103,12 @@ for (let index = 0; index < pixelsColorir.length; index += 1) {
         salvarDesenho;
     }    
 }
+}
 
 function salvarDesenho() {
     let desenho = document.getElementsByClassName('pixel');
     let salvamento = [];
     for (let index = 0; index < desenho.length; index += 1) {
-        if (desenho.style.backgroundColor = "white") {
-            salvamento.push ("white")
-        }
         salvamento.push (desenho[index].style.backgroundColor)
         localStorage.setItem('pixelBoard',JSON.stringify(salvamento))
     }
@@ -110,7 +117,7 @@ function salvarDesenho() {
 
 }
     
-console.log(corEscolhida)
+// console.log(corEscolhida)
 
 
 // só pra lembrar: https://projects.raspberrypi.org/pt-PT/projects/pixel-art/6
