@@ -39,7 +39,8 @@ for (let index = 0; index < coresSelecionaveis.length; index += 1) {
             coresSelecionaveis[key].className = 'color';
             }
         }
-        corEscolhida.className = 'color selected'
+        corEscolhida.className = 'color selected';
+        console.log(corEscolhida.style.backgroundColor)
     })
 }
 
