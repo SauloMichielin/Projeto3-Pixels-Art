@@ -34,7 +34,7 @@ for (let i = 1; i < size; i += 1) {
 for (let index = 0; index < size * size; index += 1) {
     let div = document.createElement('div');
     div.classList.add('pixel')
-    div.style.backgroundColor = 'white';
+    div.style.backgroundColor = "rgb(255, 255, 255)";
     quadrados.appendChild(div);
     
 }
@@ -65,7 +65,7 @@ function grids() {
         for (let index = 0; index < size * size; index += 1) {
             let div = document.createElement('div');
             div.classList.add('pixel')
-            div.style.backgroundColor = 'white'
+            div.style.backgroundColor = "rgb(255, 255, 255)";
             quadrados.appendChild(div);
         }
     }
@@ -91,18 +91,18 @@ for (let index = 0; index < coresSelecionaveis.length; index += 1) {
 }
 
 function corSelecionada(){
-const corEscolhida = document.getElementsByClassName('color selected');
-const pixelsColorir = document.getElementsByClassName('pixel');
-for (let index = 0; index < pixelsColorir.length; index += 1) {
-    pixelsColorir[index].addEventListener('click', pixelColorido)
-    function pixelColorido() {
-        const corEscolhida = document.getElementsByClassName('color selected');
-        pixelsColorir[index].style.backgroundColor = corEscolhida[0].style.backgroundColor;
-        console.log(corEscolhida[0].style.backgroundColor)
-        console.log(pixelsColorir[index].style.backgroundColor)
-        salvarDesenho;
-    }    
-}
+    const corEscolhida = document.getElementsByClassName('color selected');
+    const pixelsColorir = document.getElementsByClassName('pixel');
+    for (let index = 0; index < pixelsColorir.length; index += 1) {
+        pixelsColorir[index].addEventListener('click', pixelColorido)
+        function pixelColorido() {
+            const corEscolhida = document.getElementsByClassName('color selected');
+            pixelsColorir[index].style.backgroundColor = corEscolhida[0].style.backgroundColor;
+            console.log(corEscolhida[0].style.backgroundColor)
+            console.log(pixelsColorir[index].style.backgroundColor)
+            salvarDesenho();
+        }    
+    }
 }
 
 function salvarDesenho() {
@@ -111,6 +111,7 @@ function salvarDesenho() {
     for (let index = 0; index < desenho.length; index += 1) {
         salvamento.push (desenho[index].style.backgroundColor)
         localStorage.setItem('pixelBoard',JSON.stringify(salvamento))
+        console.log(salvamento)
     }
 
     console.log(salvamento)
@@ -134,7 +135,7 @@ function reset () {
 
 window.onload = function() {
     let coresIniciais = JSON.parse(localStorage.getItem('colorPalette'));
-    // let armazenarDesenho = JSON.parse(localStorage.getItem('pixelBoard'));
+
     console.log(coresIniciais)
     // console.log(armazenarDesenho)
     if (coresIniciais === null) {
@@ -146,14 +147,16 @@ window.onload = function() {
         document.getElementById('cor3').style.backgroundColor = coresIniciais[1];
         document.getElementById('cor4').style.backgroundColor = coresIniciais[2];
     }
-    // function desenho() {
-    //     if (coresIniciais === null) {
-    //         for (key in armazenarDesenho) {
-    //             armazenarDesenho[key].style.backgroundColor = "white"
-    //         }
-    // }
-    //     for (key in armazenarDesenho) {
-    //         armazenarDesenho[key].style.backgroundColor = armazenarDesenho[key]
-    //     }
-    // }
-}
+
+        let armazenarDesenho = JSON.parse(localStorage.getItem('pixelBoard'));
+        const pixels = document.getElementsByClassName('pixel')
+        if (coresIniciais === null) {
+            for (key in armazenarDesenho) {
+                armazenarDesenho[key].style.backgroundColor = "rgb(255, 255, 255)"
+            } 
+        } else {
+            for (let index = 0; index < armazenarDesenho.length; index += 1) {
+                pixels[index].style.backgroundColor = armazenarDesenho[index]
+            }
+        }
+    }
