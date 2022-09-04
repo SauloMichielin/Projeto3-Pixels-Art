@@ -22,36 +22,49 @@ function alteraCores () {
     localStorage.setItem('colorPalette',JSON.stringify(corInicial));
 }
 
+let size = parseInt(document.getElementById('inputGrid').value);
+let = board = 'auto';
+let grid = (size * 42);
+let quadrados = document.getElementById("pixel-board");
+for (let i = 1; i < size; i += 1) {
+    board = board + ' auto';
+    quadrados.style.gridTemplateColumns = board
+}
+for (let index = 0; index < size * size; index += 1) {
+    let div = document.createElement('div');
+    div.classList.add('pixel')
+    quadrados.appendChild(div);
+}
 
-function grids(size) {
-    let = board = 'auto'
-    const grade = document.getElementById('pixel-board');
+const botaoTamanho = document.getElementById('botaoTamanho');
+botaoTamanho.addEventListener('click', grids);
+function grids() {
+    size = parseInt(document.getElementById('inputGrid').value);
+    board = 'auto';
+    grid = (size * 42);
+    quadrados = document.getElementById("pixel-board");
+    const pixelados = document.getElementsByClassName('pixel');
+    quadrados.style.height = grid + 'px';
+    quadrados.style.width = grid + 'px';
+    for (let i = pixelados.length - 1; i >=0; i--) {
+        pixelados[i].remove();
+    }
     for (let i = 1; i < size; i += 1) {
         board = board + ' auto';
-        grade.style.gridTemplateColumns = board
+        quadrados.style.gridTemplateColumns = board
     }
-    // grade.style.width = board + 'px'
-    // grade.style.height = board + 'px'
     for (let index = 0; index < size * size; index += 1) {
-        const quadrados = document.getElementById("pixel-board");
         let div = document.createElement('div');
         div.classList.add('pixel')
         quadrados.appendChild(div);
     }
 }
 
-const inputGrid = parseInt(document.getElementById('inputGrid').value)
-const botaoTamanho = document.getElementById('botaoTamanho')
-botaoTamanho.addEventListener('click', grids(inputGrid));
 
 
 
-// for (let index = 1; index <= 25; index += 1) {
-//     const quadrados = document.getElementById("pixel-board");
-//     let div = document.createElement('div');
-//     div.classList.add('pixel')
-//     quadrados.appendChild(div);
-// }
+
+
 
 document.getElementById('cor1').style.background = 'black';
 
