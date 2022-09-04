@@ -29,11 +29,43 @@ for (let index = 1; index <= 25; index += 1) {
     quadrados.appendChild(div);
 }
 
+//Feito com ajuda do Thiago Henrique
+const coresSelecionaveis = document.getElementsByClassName("color");
+for (let index = 0; index < coresSelecionaveis.length; index += 1) {   
+    coresSelecionaveis[index].addEventListener('click', function() {
+        let corEscolhida = coresSelecionaveis[index]
+        for (let key = 0; key < coresSelecionaveis.length; key += 1){
+            if (coresSelecionaveis[key] != 'color'){
+            coresSelecionaveis[key].className = 'color';
+            }
+        }
+        corEscolhida.className = 'color selected'
+    })
+}
+
+const corEscolhida = document.getElementsByClassName('color selected');
+const pixelsColorir = document.getElementsByClassName('pixel');
+for (let index = 0; index < pixelsColorir.length; index += 1) {
+    pixelsColorir[index].addEventListener('click', pixelColorido)
+    function pixelColorido() {
+        const corEscolhida = document.getElementsByClassName('color selected');
+        pixelsColorir[index].style.backgroundColor = corEscolhida[0].style.backgroundColor;
+        console.log(corEscolhida[0].style.backgroundColor)
+        console.log(pixelsColorir[index].style.backgroundColor)
+    }
+}
+    
+console.log(corEscolhida)
+
+
+// só pra lembrar: https://projects.raspberrypi.org/pt-PT/projects/pixel-art/6
+
+
 const botaoLimpar = document.getElementById('clear-board')
 botaoLimpar.addEventListener('click', reset)
 function reset () {
     const pixels = document.getElementsByClassName('pixel')
-    for (let index = 0; index < pixels.length; index +=1) {
+    for (let index = 0; index < pixels.length; index += 1) {
     pixels[index].style.backgroundColor = 'white'
     }
 }
