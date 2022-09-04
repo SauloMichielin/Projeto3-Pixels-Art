@@ -22,12 +22,38 @@ function alteraCores () {
     localStorage.setItem('colorPalette',JSON.stringify(corInicial));
 }
 
-for (let index = 1; index <= 25; index += 1) {
-    const quadrados = document.getElementById("pixel-board");
-    let div = document.createElement('div');
-    div.classList.add('pixel')
-    quadrados.appendChild(div);
+
+function grids(size) {
+    let = board = 'auto'
+    const grade = document.getElementById('pixel-board');
+    for (let i = 1; i < size; i += 1) {
+        board = board + ' auto';
+        grade.style.gridTemplateColumns = board
+    }
+    // grade.style.width = board + 'px'
+    // grade.style.height = board + 'px'
+    for (let index = 0; index < size * size; index += 1) {
+        const quadrados = document.getElementById("pixel-board");
+        let div = document.createElement('div');
+        div.classList.add('pixel')
+        quadrados.appendChild(div);
+    }
 }
+
+const inputGrid = parseInt(document.getElementById('inputGrid').value)
+const botaoTamanho = document.getElementById('botaoTamanho')
+botaoTamanho.addEventListener('click', grids(inputGrid));
+
+
+
+// for (let index = 1; index <= 25; index += 1) {
+//     const quadrados = document.getElementById("pixel-board");
+//     let div = document.createElement('div');
+//     div.classList.add('pixel')
+//     quadrados.appendChild(div);
+// }
+
+document.getElementById('cor1').style.background = 'black';
 
 //Feito com ajuda do Thiago Henrique
 const coresSelecionaveis = document.getElementsByClassName("color");
@@ -40,7 +66,6 @@ for (let index = 0; index < coresSelecionaveis.length; index += 1) {
             }
         }
         corEscolhida.className = 'color selected';
-        console.log(corEscolhida.style.backgroundColor)
     })
 }
 
@@ -53,7 +78,23 @@ for (let index = 0; index < pixelsColorir.length; index += 1) {
         pixelsColorir[index].style.backgroundColor = corEscolhida[0].style.backgroundColor;
         console.log(corEscolhida[0].style.backgroundColor)
         console.log(pixelsColorir[index].style.backgroundColor)
+        salvarDesenho;
+    }    
+}
+
+function salvarDesenho() {
+    let desenho = document.getElementsByClassName('pixel');
+    let salvamento = [];
+    for (let index = 0; index < desenho.length; index += 1) {
+        if (desenho.style.backgroundColor = "white") {
+            salvamento.push ("white")
+        }
+        salvamento.push (desenho[index].style.backgroundColor)
+        localStorage.setItem('pixelBoard',JSON.stringify(salvamento))
     }
+
+    console.log(salvamento)
+
 }
     
 console.log(corEscolhida)
@@ -73,7 +114,9 @@ function reset () {
 
 window.onload = function() {
     let coresIniciais = JSON.parse(localStorage.getItem('colorPalette'));
+    // let armazenarDesenho = JSON.parse(localStorage.getItem('pixelBoard'));
     console.log(coresIniciais)
+    // console.log(armazenarDesenho)
     if (coresIniciais === null) {
         document.getElementById('cor2').style.backgroundColor = 'RGB(255, 0, 0)';
         document.getElementById('cor3').style.backgroundColor  = 'RGB(0, 255, 0)';
@@ -83,4 +126,14 @@ window.onload = function() {
         document.getElementById('cor3').style.backgroundColor = coresIniciais[1];
         document.getElementById('cor4').style.backgroundColor = coresIniciais[2];
     }
+    // function desenho() {
+    //     if (coresIniciais === null) {
+    //         for (key in armazenarDesenho) {
+    //             armazenarDesenho[key].style.backgroundColor = "white"
+    //         }
+    // }
+    //     for (key in armazenarDesenho) {
+    //         armazenarDesenho[key].style.backgroundColor = armazenarDesenho[key]
+    //     }
+    // }
 }
