@@ -148,15 +148,15 @@ window.onload = function() {
         document.getElementById('cor4').style.backgroundColor = coresIniciais[2];
     }
 
-        let armazenarDesenho = JSON.parse(localStorage.getItem('pixelBoard'));
-        const pixels = document.getElementsByClassName('pixel')
-        if (coresIniciais === null) {
-            for (key in armazenarDesenho) {
-                armazenarDesenho[key].style.backgroundColor = "rgb(255, 255, 255)"
-            } 
-        } else {
-            for (let index = 0; index < armazenarDesenho.length; index += 1) {
-                pixels[index].style.backgroundColor = armazenarDesenho[index]
-            }
-        }
+        // let armazenarDesenho = JSON.parse(localStorage.getItem('pixelBoard'));
+        // const pixels = document.getElementsByClassName('pixel')
+        // if (coresIniciais === null) {
+        //     for (key in armazenarDesenho) {
+        //         armazenarDesenho[key].style.backgroundColor = "rgb(255, 255, 255)"
+        //     } 
+        // } else {
+        //     for (let index = 0; index < armazenarDesenho.length; index += 1) {
+        //         pixels[index].style.backgroundColor = armazenarDesenho[index]
+        //     }
+        // }
     }
