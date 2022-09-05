@@ -22,7 +22,6 @@ function alteraCores () {
     localStorage.setItem('colorPalette',JSON.stringify(corInicial));
 }
 
-
 let size = 5;
 let = board = 'auto';
 let grid = (size * 42);
@@ -45,6 +44,11 @@ const botaoTamanho = document.getElementById('generate-board');
 botaoTamanho.addEventListener('click', grids);
 function grids() {
     size = parseInt(document.getElementById('board-size').value);
+    if (size < 5) {
+        size = 5;
+    } if (size > 50) {
+        size = 50;
+    }
     board = 'auto';
     grid = (size * 42);
     quadrados = document.getElementById("pixel-board");
@@ -131,6 +135,7 @@ function reset () {
     for (let index = 0; index < pixels.length; index += 1) {
     pixels[index].style.backgroundColor = 'white'
     }
+    salvarDesenho()
 }
 
 window.onload = function() {
